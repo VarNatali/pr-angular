@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <section class="movie__container group-movie">
+        <div class="group-movie__movies movie">
+            <div class="movie__card">
+                <img [src]="movie.backdrop_path" class="movie__image">
+                <div class="movie__details">
+                    <h2>{{ movie.title }}</h2>
+                    <p><b>Дата виходу:</b> {{movie.release_date}}</p>
+                    <p><b>Рейтинг:</b> {{ movie.rating }}</p>
+                    <p><b>Опис:</b>{{ movie.overview }}</p>
+                    <a class="movie__ref" href="#">Детальніше</a> <br>
+                    <div class="movie__more">
+                        <p><b>Тривалість:</b>{{movie.duration}}</p>
+                        <p><b>Режисер: </b>{{movie.filmmaker}}</p>
+                        <p><b>Вікові обмеження:</b> {{movie.age_limits}}</p>
+                    </div>
+                    <button (click)="favourite()" title="Додати в улюблене">Улюблене</button>
+                    <button (click)="watchList()" title="Подивитися">Подивитись</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
