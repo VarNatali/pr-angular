@@ -1,2 +1,31 @@
-<app-movie-card [data]="movie" (favourite)="handleFavourite($event)" (watchList)="handleWatchList($event)">
-</app-movie-card>
+<div class="wrapper movie">
+    <div class="movie__container section">
+        <section class="section__all-movie all-movie">
+            <h2 class="all-movie__title">Всі фільми</h2>
+            <div class="all-movie__group">
+                <ng-container *ngFor="let movie of movies">
+                    <app-movie-card [item]="movie" (addToFavouriteEvent)="handleAddingFavorites(movie)" (addToWatchEvent)="handleAddingWatchList(movie)">
+                    </app-movie-card>
+                </ng-container>
+            </div>
+        </section>
+        <section class="section__all-movie all-movie">
+            <h2 class="all-movie__title">Улюблене</h2>
+            <div class="all-movie__group">
+                <ng-container *ngFor="let movie of favoriteList">
+                    <app-movie-card [isShowRemove]="true" [item]="movie" (removeFromFavouriteEvent)="removingFromFavourite(movie)">
+                    </app-movie-card>
+                </ng-container>
+            </div>
+        </section>
+        <section class="section__all-movie all-movie">
+            <h2 class="all-movie__title">Переглянути пізніше</h2>
+            <div class="all-movie__group">
+                <ng-container *ngFor="let movie of watchLaterList">
+                    <app-movie-card [isShowRemove]="true" [item]="movie" (removeFromWatchEvent)="removingFromWatch(movie)">
+                    </app-movie-card>
+                </ng-container>
+            </div>
+        </section>
+    </div>
+</div>

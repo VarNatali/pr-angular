@@ -1,27 +1,43 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Movie } from '../models/movie';
+import { movies } from '../constants/movies';
+import { DateFormatPipe } from "../../pipes/date-format.pipe";
+
+
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DateFormatPipe],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss'
 })
 
-export class MovieCardComponent implements OnInit {
-  @Input() data: any;
-  public movie: any;
-  @Output() addWatchList = new EventEmitter<any>();
-  @Output() addFavourite = new EventEmitter<any>();
+export class MovieCardComponent {
+  @Input() item!: Movie;
+  @Input() isShowRemove!: boolean;
 
-  ngOnInit() {
-    this.movie = this.data;
+  @Output() addToFavouriteEvent = new EventEmitter<any>();
+  @Output() addToWatchEvent = new EventEmitter<any>();
+  @Output() removeFromWatchEvent = new EventEmitter<any>();
+  @Output() removeFromFavouriteEvent = new EventEmitter<any>();
+  // public isShow = false;
+
+  addToFavouriteList() {//подія, відбувається в template child
+    this.addToFavouriteEvent.emit();
+
   }
-  watchList() {
-    this.addWatchList.emit(this.movie.title);
+  addToWatchList() {
+    this.addToWatchEvent.emit();
   }
-  favourite() {
-    this.addFavourite.emit(this.movie.title);
+
+  removeFromWatch() {//подія, відбувається в template child
+    this.removeFromWatchEvent.emit();
+
+  }
+  removeFromFavourite() {//подія,  відбувається в template child
+    this.removeFromFavouriteEvent.emit();
   }
 
 }
+//

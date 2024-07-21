@@ -1,23 +1,24 @@
-<div class="wrapper">
-    <section class="movie__container group-movie">
-        <div class="group-movie__movies movie">
-            <div class="movie__card">
-                <img [src]="movie.backdrop_path" class="movie__image">
-                <div class="movie__details">
-                    <h2>{{ movie.title }}</h2>
-                    <p><b>Дата виходу:</b> {{movie.release_date}}</p>
-                    <p><b>Рейтинг:</b> {{ movie.rating }}</p>
-                    <p><b>Опис:</b>{{ movie.overview }}</p>
-                    <a class="movie__ref" href="#">Детальніше</a> <br>
-                    <div class="movie__more">
-                        <p><b>Тривалість:</b>{{movie.duration}}</p>
-                        <p><b>Режисер: </b>{{movie.filmmaker}}</p>
-                        <p><b>Вікові обмеження:</b> {{movie.age_limits}}</p>
-                    </div>
-                    <button (click)="favourite()" title="Додати в улюблене">Улюблене</button>
-                    <button (click)="watchList()" title="Подивитися">Подивитись</button>
-                </div>
+<div class="group-movie__movies movie">
+    <div class="movie__card">
+        <img [src]="item.backdrop_path" class="movie__image">
+        <div class="movie__details">
+            <h2>{{ item.title }}</h2>
+            <p>Дата виходу: {{item.release_date}}</p>
+            <p>Рейтинг: {{ item.rating }}</p>
+            <p>Опис:{{ item.overview }}</p>
+            <a class="movie__ref" href="#">Детальніше</a> <br>
+            <div class="movie__more">
+                <p>Тривалість:{{item.duration|dateFormat}}</p>
+                <p> Режисер: {{ item.filmmaker }}</p>
+                <p>Вікові обмеження:{{item.age_limits}}</p>
+            </div>
+            <div class="movie__buttons button-group">
+                <button (click)="addToFavouriteList()" title="Додати в улюблене" class="button-group__favorite"></button>
+                <button (click)="addToWatchList()" title="Переглянути пізніше" class="button-group__watch"></button>
+                <ng-container>
+                    <button *ngIf="isShowRemove" (click)="removeFromFavourite()" (click)="removeFromWatch()" title="Видалити" class="button-group__remove"></button>
+                </ng-container>
             </div>
         </div>
-    </section>
+    </div>
 </div>

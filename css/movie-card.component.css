@@ -1,14 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.wrapper {
-  min-height: 100%;
-  overflow: clip;
+.movie {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,24 +7,10 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
-.wrapper > main {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-[class*=__container] {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0px 15px;
-  overflow: hidden;
-}
-
 .movie__card {
+  width: 250px;
+  padding: 1rem;
   border-radius: 8px;
-  padding: 16px;
-  max-width: 250px;
   text-align: center;
   border: 2px solid grey;
 }
@@ -43,26 +19,55 @@
   height: 75%;
   -o-object-fit: contain;
      object-fit: contain;
+  aspect-ratio: 250/355;
   -o-object-position: top;
      object-position: top;
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.movie__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8px;
+  margin-bottom: auto;
+}
+.movie__remove {
+  display: none;
 }
 .movie button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin: 8px;
-  padding: 8px 16px;
+  padding: 8px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
-  width: 100px;
+  width: 30px;
+  height: 30px;
 }
-.movie button:first-of-type {
-  background-color: #f0ad4e;
-  color: white;
+.movie button:hover {
+  background-color: red;
 }
-.movie button:last-of-type {
-  background-color: #5bc0de;
-  color: white;
+
+.button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.movie__more {
-  display: none;
+.button-group__favorite {
+  background: url("../../../assets/img/favorite.png") 0 0/cover no-repeat;
+  background-color: aqua;
+}
+.button-group__watch {
+  background: url("../../../assets/img/later.png") 0 0/cover no-repeat;
+  background-color: greenyellow;
+}
+.button-group__remove {
+  background: url("../../../assets/img/delete.png") 0 0/cover no-repeat;
 }
